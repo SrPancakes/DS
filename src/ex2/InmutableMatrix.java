@@ -14,22 +14,26 @@ public class InmutableMatrix {
     }
 
     public InmutableMatrix(int filas, int columnas){
-        this.arr = new int[filas][columnas];
+        arr = new int[filas][columnas];
         if(filas <= 0 || columnas <= 0) throw new IllegalArgumentException();
         int aux = 0;
         for(int i = 0; i < filas; i++){
             for(int j = 0; j < columnas; j++){
-                this.arr[i][j] = aux;
+                arr[i][j] = aux;
                 aux++;
             }
         }
     }
 
+    public int at(int x, int y){
+        if(x > arr.length || y > arr[x].length) throw new IllegalArgumentException();
+        return arr[x][y];
+    }
     public String toString(){
         String res = "";
         for(int i = 0; i < arr.length; i++){
             for(int j = 0; j < arr[i].length; j++){
-                res += this.arr[i][j] + " ";
+                res += arr[i][j] + " ";
             }
             res += "\n";
         }
@@ -38,10 +42,6 @@ public class InmutableMatrix {
 
     public int[][] getArray(){
         return this.arr;
-    }
-
-    public void setArray(int[][] arr){
-        this.arr = arr;
     }
 
 }

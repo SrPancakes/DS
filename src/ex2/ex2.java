@@ -12,7 +12,7 @@ public class ex2 {
 
         int[][] arr = {{1,2,3}, {2,3,5}};
         InmutableMatrix m = new InmutableMatrix(arr);
-        System.out.println(m.toString());
+        System.out.println(m.at(1,2));
     }
 
 }
