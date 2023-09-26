@@ -1,5 +1,7 @@
 package ex2;
 
+import java.util.Arrays;
+
 public class InmutableMatrix {
 
     private int[][] arr;
@@ -16,7 +18,7 @@ public class InmutableMatrix {
     public InmutableMatrix(int filas, int columnas){
         arr = new int[filas][columnas];
         if(filas <= 0 || columnas <= 0) throw new IllegalArgumentException();
-        int aux = 0;
+        int aux = 1;
         for(int i = 0; i < filas; i++){
             for(int j = 0; j < columnas; j++){
                 arr[i][j] = aux;
@@ -26,13 +28,7 @@ public class InmutableMatrix {
     }
 
     public int[][] toArray2D(){
-        int[][] array = new int[arr.length][arr[0].length];
-        for(int i = 0; i < arr.length; i++){
-            for(int j = 0; j < arr[i].length; j++){
-                array[i][j] = arr[i][j];
-            }
-        }
-        return array;
+        return Arrays.copyOf(arr, arr.length);
     }
 
     public int rowCount(){
@@ -57,6 +53,42 @@ public class InmutableMatrix {
         }
         return new InmutableMatrix(rev);
     }
+
+    public InmutableMatrix traspose(){
+        int[][] tras = new int[arr[0].length][arr.length];
+        for(int i = 0; i < arr.length; i++){
+            for(int j = 0; j < arr[i].length; j++){
+                tras[j][i] = arr[i][j];
+            }
+        }
+        return new InmutableMatrix(tras);
+    }
+
+    public InmutableMatrix reshape(int col){
+        if((arr.length * arr[0].length) % col != 0) throw new IllegalArgumentException();
+        int newFiles = (arr.length * arr[0].length) / col;
+        int[][] res = new int[newFiles][col];
+
+        int aux = 0;
+        int[] vals = new int[arr.length * arr[0].length];
+        for(int i = 0; i < arr.length; i++){
+            for(int j = 0; j < arr[i].length; j++){
+                vals[aux] = arr[i][j];
+                aux++;
+            }
+        }
+
+        aux = 0;
+        for(int i = 0; i < newFiles; i++){
+            for(int j = 0; j < col; j++){
+                res[i][j] = vals[aux];
+                aux++;
+            }
+        }
+
+        return new InmutableMatrix(res);
+    }
+
     public String toString(){
         String res = "";
         for(int i = 0; i < arr.length; i++){
