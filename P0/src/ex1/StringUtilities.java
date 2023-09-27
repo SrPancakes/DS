@@ -2,21 +2,22 @@ package ex1;
 
 public class StringUtilities {
 
-    public static boolean isValidString(String s, int maxLength, String validCharacters){
-        boolean areValid = true;
-        for(char c : s.toCharArray())
+    public static boolean isValidString(String s, String validCharacters, int maxLength){
+        if(s == null || s.isEmpty()) return false;
+        String str = s.replaceAll("[123456789]", "");
+        for(char c : str.toCharArray())
             /*
                 Miramos que cada caracter esté incluído en
                 el conjunto de caracteres introducidos por parámetro
              */
-            if(validCharacters.indexOf(c) == -1) areValid = false;
+            if(validCharacters.indexOf(c) == -1) return false;
 
         /*
             Comprobamos: Que no esté vacía,
             que la longitud sea igual o menor que el máximo y
              que se cumpla la condición de arriba
          */
-        return !s.isEmpty() && s.length() <= maxLength && areValid;
+        return s.length() >= maxLength;
     }
 
     public static String lowercaseFirst(String s){
@@ -29,7 +30,7 @@ public class StringUtilities {
     }
 
     public static boolean checkTextStats(String s, int lengthMin, int lengthMax){
-        if(s.isEmpty() || lengthMin <= 0 || lengthMax <= 0) throw new IllegalArgumentException();
+        if(s == null || s.isEmpty() || lengthMin <= 0 || lengthMax <= 0) throw new IllegalArgumentException();
 
         int totalLength = 0, wordMaxLength = 0, totalWords = 0;
 
@@ -39,10 +40,10 @@ public class StringUtilities {
             totalWords++;
         }
 
-        int lengthMed = totalLength / totalWords;
+        double lengthMed = (double) totalLength / totalWords;
 
-        return (lengthMed) > lengthMin
-                && (lengthMed) < lengthMax
+        return (lengthMed) >= lengthMin
+                && (lengthMed) <= lengthMax
                 && wordMaxLength <= 2*(lengthMed);
     }
 

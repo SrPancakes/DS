@@ -40,7 +40,7 @@ public class InmutableMatrix {
     }
 
     public int at(int x, int y){
-        if(x > arr.length || y > arr[x].length) throw new IllegalArgumentException();
+        if(x >= arr.length || y >= arr[x].length) throw new IllegalArgumentException();
         return arr[x][y];
     }
 
@@ -54,7 +54,7 @@ public class InmutableMatrix {
         return new InmutableMatrix(rev);
     }
 
-    public InmutableMatrix traspose(){
+    public InmutableMatrix transpose(){
         int[][] tras = new int[arr[0].length][arr.length];
         for(int i = 0; i < arr.length; i++){
             for(int j = 0; j < arr[i].length; j++){
@@ -66,6 +66,7 @@ public class InmutableMatrix {
 
     public InmutableMatrix reshape(int col){
         if((arr.length * arr[0].length) % col != 0) throw new IllegalArgumentException();
+
         int newFiles = (arr.length * arr[0].length) / col;
         int[][] res = new int[newFiles][col];
 
@@ -90,18 +91,19 @@ public class InmutableMatrix {
     }
 
     public String toString(){
-        String res = "";
+        StringBuilder res = new StringBuilder();
         for(int i = 0; i < arr.length; i++){
             for(int j = 0; j < arr[i].length; j++){
-                res += arr[i][j] + " ";
+                if(j==0)
+                    res.append("[" + arr[i][j] + ", ");
+                else if (j == arr[i].length - 1)
+                    res.append(arr[i][j] + "");
+                else
+                    res.append(arr[i][j] + ", ");
             }
-            res += "\n";
+            res.append("]\n");
         }
-        return res;
-    }
-
-    public int[][] getArray(){
-        return this.arr;
+        return res.toString();
     }
 
 }
