@@ -22,6 +22,8 @@ class ReleaseTest {
 
     public static Release release1;
     public static Release release2;
+    public static Release release3;
+    public static Release release4;
 
     @BeforeAll
     static void setUp() {
@@ -38,19 +40,39 @@ class ReleaseTest {
 
         // OTROS TESTS
 
-        String track1 = "track1";
-        String track2 = "track2";
+        /*
+            - Probamos que no son iguales cuando dos Releases
+                no tienen ningun Track.
+            - Probamos que son iguales cuando dos Releases
+                tienen los mismos Tracks pero en distinto orden.
+            - Probamos que no son iguales cuando un Release no
+                tiene ningún Track.
+         */
+
+
+        //Releases vacíos
         release1 = new Release("release1");
         release1.setArtist("Rodrigo");
         release1.setTitle("Release 1");
-        release1.addTrack(new Track("A", track1, "Rodrigo", "Track 1", 120));
-        release1.addTrack(new Track("b", track2, "Rodrigo", "Track 1", 120));
 
-        release2 = new Release("release1");
+        release2 = new Release("release2");
         release2.setArtist("Rodrigo");
-        release2.setTitle("Release 1");
-        release2.addTrack(new Track("A", track1, "Rodrigo", "Track 1", 120));
-        release2.addTrack(new Track("b", track2, "Rodrigo", "Track 1", 120));
+        release2.setTitle("Release 2");
+
+        //Releases con Tracks
+        String track1 = "xxx--xxx--xxx1";
+        String track2 = "xxx--xxx--xxx2";
+        release3 = new Release("release3");
+        release3.setArtist("Rodrigo");
+        release3.setTitle("Release 3");
+        release3.addTrack(new Track("A", track1, "Rodrigo", "Track1", 120));
+        release3.addTrack(new Track("AB", track2, "Rodrigo", "Track2", 130));
+
+        release4 = new Release("release4");
+        release4.setArtist("Rodrigo");
+        release4.setTitle("Release 4");
+        release4.addTrack(new Track("B", track2, "Rodrigo", "Track2", 130));
+        release4.addTrack(new Track("BB", track1, "Rodrigo", "Track1", 120));
 
         /* Releases. */
 
@@ -104,10 +126,35 @@ class ReleaseTest {
     }
 
     @Test
+    void testConstructorException() {
+        assertThrows(IllegalArgumentException.class, () -> new Release(null));
+        assertThrows(IllegalArgumentException.class, () -> new Release(""));
+    }
+
+    @Test
+    void testToString(){
+        assertEquals("(release4): Release 4 de Rodrigo con las siguientes pistas:\n" +
+                "- (B): Track2 de Rodrigo con duracion 130s [xxx--xxx--xxx2]\n" +
+                "- (BB): Track1 de Rodrigo con duracion 120s [xxx--xxx--xxx1]\n", release4.toString());
+
+        assertEquals("(release1): Release 1 de Rodrigo con las siguientes pistas:\n", release1.toString());
+    }
+
+    @Test
+    void testRemoveTrack(){
+        Track t = new Track("C", "----", "Rodrigo", "Track3", 150);
+        release4.addTrack(t);
+        release4.removeTrack(t);
+        assertEquals(release3, release4);
+        assertEquals(release3.hashCode(), release4.hashCode());
+    }
+
+    @Test
     void testEquals() {
         assertEquals(beatlesSFFPennyLane, beatlesPennyLanePromo); // Same but with flipped sides.
         assertEquals(madonnaAngelUSMaxiSingle, madonnaIntoTheGrooveUSMaxiSingle); // Same but with flipped sides.
-        assertEquals(release1, release2);
+
+        assertEquals(release3, release4); // Probamos que dos Releases son iguales cuando tienen los mismos Tracks en distinto orden
     }
 
     @Test
@@ -115,12 +162,19 @@ class ReleaseTest {
         assertNotEquals(beatlesSFFPennyLane, beatlesSFFDigital); // Different number of songs.
         assertNotEquals(madonnaAngelUKMaxiSingle, madonnaAngelUSMaxiSingle); // Different songs.
         assertNotEquals(madonnaAngelUKSingle, madonnaAngelUSMaxiSingle); // Same songs but different versions.
+
+        assertNotEquals(release1, release2); //Probamos que dos Releases no son iguales cuando ninguno tiene Tracks
+        assertNotEquals(release1.hashCode(), release2.hashCode()); //Lo mismo pero con Hash
+
+        assertNotEquals(release1, release3); //Probamos que dos Releases no son iguales cuando uno de ellos no tiene Tracks
+        assertNotEquals(release1.hashCode(), release3.hashCode()); //Lo mismo pero con Hash
     }
 
     @Test
     void testHashCode() {
         assertEquals(beatlesSFFPennyLane.hashCode(), beatlesPennyLanePromo.hashCode()); // Same but with flipped sides.
         assertEquals(madonnaAngelUSMaxiSingle.hashCode(), madonnaIntoTheGrooveUSMaxiSingle.hashCode()); // Same but with flipped sides.
-        assertEquals(release1.hashCode(), release2.hashCode());
+
+        assertEquals(release3.hashCode(), release4.hashCode()); // Probamos que dos Releases son iguales cuando tienen los mismos Tracks en distinto orden
     }
 }

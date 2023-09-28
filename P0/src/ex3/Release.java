@@ -13,8 +13,11 @@ public class Release {
     private ArrayList<Track> trackList;
 
     public Release(String id){
-        this.id = id;
-        this.trackList = new ArrayList<>();
+        if(id == null || id.isEmpty()) throw new IllegalArgumentException();
+        else {
+            this.id = id;
+            this.trackList = new ArrayList<>();
+        }
     }
 
     public void addTrack(Track T){
@@ -74,7 +77,7 @@ public class Release {
     }
 
     public String toString(){
-        StringBuilder sb = new StringBuilder("(" + this.id + "): " + this.title + " de " + this.artist + " con las sigueintes pistas:\n");
+        StringBuilder sb = new StringBuilder("(" + this.id + "): " + this.title + " de " + this.artist + " con las siguientes pistas:\n");
         for(Track t : trackList){
             sb.append("- (" + t.id() + "): " + t.title() + " de " + t.artist() + " con duracion " + t.duration() + "s [" + t.recording() + "]\n");
         }

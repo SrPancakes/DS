@@ -5,7 +5,7 @@ import java.util.Objects;
 public record Track (String id, String recording, String artist, String title, int duration){
     public Track{
         if(id == null || recording == null ||
-                artist == null || title == null ||duration <= 0) throw new IllegalArgumentException();
+                artist == null || title == null || duration <= 0) throw new IllegalArgumentException();
     }
 
     @Override

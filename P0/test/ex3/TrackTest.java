@@ -1,5 +1,6 @@
 package ex3;
 
+import ex2.InmutableMatrix;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -58,5 +59,15 @@ class TrackTest {
     void testHashCode() {
         assertEquals(beatlesSFFPennyLane01.hashCode(), beatlesPennyLanePromo02.hashCode());
         assertEquals(beatlesSFFPennyLane01.hashCode(), beatlesSFFDigital01.hashCode());
+    }
+
+    @Test
+    void testConstructorException(){
+        assertThrows(IllegalArgumentException.class, () -> new Track(null, "xxx", "Rodrigo", "Track1", 120));
+        assertThrows(IllegalArgumentException.class, () -> new Track("xxx", null, "Rodrigo", "Track1", 120));
+        assertThrows(IllegalArgumentException.class, () -> new Track("xxx", "xxx", null, "Track1", 120));
+        assertThrows(IllegalArgumentException.class, () -> new Track("xxx", "xxx", "Rodrigo", null, 120));
+        assertThrows(IllegalArgumentException.class, () -> new Track("xxx", "xxx", "Rodrigo", "Track1", 0));
+        assertThrows(IllegalArgumentException.class, () -> new Track("xxx", "xxx", "Rodrigo", "Track1", -1));
     }
 }
