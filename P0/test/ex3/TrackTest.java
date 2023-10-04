@@ -1,9 +1,5 @@
 package ex3;
 
-<<<<<<< HEAD
-=======
-import ex2.InmutableMatrix;
->>>>>>> 78b1d651b6c0ef95d1a5b7630ed14ca479735857
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 

@@ -4,11 +4,7 @@ import java.util.Arrays;
 
 public class InmutableMatrix {
 
-<<<<<<< HEAD
     private final int[][] arr;
-=======
-    final private int[][] arr;
->>>>>>> 78b1d651b6c0ef95d1a5b7630ed14ca479735857
 
     public InmutableMatrix(int[][] arr){
         int aux = 0;
@@ -21,11 +17,7 @@ public class InmutableMatrix {
 
     public InmutableMatrix(int filas, int columnas){
         arr = new int[filas][columnas];
-<<<<<<< HEAD
         if(filas == 0 || columnas == 0) throw new IllegalArgumentException();
-=======
-        if(filas <= 0 || columnas <= 0) throw new IllegalArgumentException();
->>>>>>> 78b1d651b6c0ef95d1a5b7630ed14ca479735857
         int aux = 1;
         for(int i = 0; i < filas; i++){
             for(int j = 0; j < columnas; j++){
@@ -103,19 +95,11 @@ public class InmutableMatrix {
         for (int[] ints : arr) {
             for (int j = 0; j < ints.length; j++) {
                 if (j == 0)
-<<<<<<< HEAD
                     res.append("[").append(ints[j]).append(", ");
                 else if (j == ints.length - 1)
                     res.append(ints[j]);
                 else
                     res.append(ints[j]).append(", ");
-=======
-                    res.append("[" + ints[j] + ", ");
-                else if (j == ints.length - 1)
-                    res.append(ints[j] + "");
-                else
-                    res.append(ints[j] + ", ");
->>>>>>> 78b1d651b6c0ef95d1a5b7630ed14ca479735857
             }
             res.append("]\n");
         }

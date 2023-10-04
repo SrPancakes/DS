@@ -1,10 +1,5 @@
 package ex3;
 
-<<<<<<< HEAD
-=======
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
->>>>>>> 78b1d651b6c0ef95d1a5b7630ed14ca479735857
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -136,17 +131,11 @@ class ReleaseTest {
 
     @Test
     void testToString(){
-<<<<<<< HEAD
         assertEquals("""
                 (release4): Release 4 de Rodrigo con las siguientes pistas:
                 - (B): Track2 de Rodrigo con duracion 130s [xxx--xxx--xxx2]
                 - (BB): Track1 de Rodrigo con duracion 120s [xxx--xxx--xxx1]
                 """, release4.toString());
-=======
-        assertEquals("(release4): Release 4 de Rodrigo con las siguientes pistas:\n" +
-                "- (B): Track2 de Rodrigo con duracion 130s [xxx--xxx--xxx2]\n" +
-                "- (BB): Track1 de Rodrigo con duracion 120s [xxx--xxx--xxx1]\n", release4.toString());
->>>>>>> 78b1d651b6c0ef95d1a5b7630ed14ca479735857
 
         assertEquals("(release1): Release 1 de Rodrigo con las siguientes pistas:\n", release1.toString());
     }

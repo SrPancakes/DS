@@ -21,21 +21,13 @@ public class StringUtilities {
     }
 
     public static String lowercaseFirst(String s){
-<<<<<<< HEAD
         StringBuilder res = new StringBuilder();
         StringBuilder aux = new StringBuilder();
-=======
-        StringBuilder res = new StringBuilder(), aux = new StringBuilder();
->>>>>>> 78b1d651b6c0ef95d1a5b7630ed14ca479735857
         for(char c : s.toCharArray()){ //Separamos en dos Strings los caracteres en minúscula y los caracteres en mayúscula
             if(Character.isLowerCase(c)) res.append(c);
             else aux.append(c);
         }
-<<<<<<< HEAD
         return res.toString() + aux; //Después los juntamos
-=======
-        return res.append(aux).toString(); //Después los juntamos
->>>>>>> 78b1d651b6c0ef95d1a5b7630ed14ca479735857
     }
 
     public static boolean checkTextStats(String s, int lengthMin, int lengthMax){

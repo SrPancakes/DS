@@ -6,13 +6,8 @@ import java.util.Comparator;
 
 public class MesaBillar {
 
-<<<<<<< HEAD
     private final ArrayList<BolaBillar> cajetin;
     private final ArrayList<BolaBillar> bolasMesa;
-=======
-    final private ArrayList<BolaBillar> cajetin;
-    final private ArrayList<BolaBillar> bolasMesa;
->>>>>>> 78b1d651b6c0ef95d1a5b7630ed14ca479735857
     private boolean started;
 
     public MesaBillar(){

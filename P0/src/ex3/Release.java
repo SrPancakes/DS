@@ -1,9 +1,5 @@
 package ex3;
 
-<<<<<<< HEAD
-=======
-import java.sql.Array;
->>>>>>> 78b1d651b6c0ef95d1a5b7630ed14ca479735857
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -13,11 +9,7 @@ public class Release {
     private String artist;
     private String title;
 
-<<<<<<< HEAD
     private final ArrayList<Track> trackList;
-=======
-    final private ArrayList<Track> trackList;
->>>>>>> 78b1d651b6c0ef95d1a5b7630ed14ca479735857
 
     public Release(String id){
         if(id == null || id.isEmpty()) throw new IllegalArgumentException();
@@ -86,11 +78,7 @@ public class Release {
     public String toString(){
         StringBuilder sb = new StringBuilder("(" + this.id + "): " + this.title + " de " + this.artist + " con las siguientes pistas:\n");
         for(Track t : trackList){
-<<<<<<< HEAD
             sb.append("- (").append(t.id()).append("): ").append(t.title()).append(" de ").append(t.artist()).append(" con duracion ").append(t.duration()).append("s [").append(t.recording()).append("]\n");
-=======
-            sb.append("- (" + t.id() + "): " + t.title() + " de " + t.artist() + " con duracion " + t.duration() + "s [" + t.recording() + "]\n");
->>>>>>> 78b1d651b6c0ef95d1a5b7630ed14ca479735857
         }
         return sb.toString();
     }
