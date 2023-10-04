@@ -10,7 +10,7 @@ public class Release {
     private String artist;
     private String title;
 
-    private ArrayList<Track> trackList;
+    final private ArrayList<Track> trackList;
 
     public Release(String id){
         if(id == null || id.isEmpty()) throw new IllegalArgumentException();
