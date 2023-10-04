@@ -26,10 +26,17 @@ public enum BolaBillar {
     final private COLOR c;
     final private TIPO t;
 
+<<<<<<< HEAD
     public enum COLOR {BLANCO, AMARILLO, AZUL, ROJO, VIOLETA, NARANJA, VERDE, GRANATE, NEGRO}
     public enum TIPO {LISA, RAYADA}
 
     BolaBillar(int n, COLOR c, TIPO t) {
+=======
+    public enum COLOR {BLANCO, AMARILLO, AZUL, ROJO, VIOLETA, NARANJA, VERDE, GRANATE, NEGRO};
+    public enum TIPO {LISA, RAYADA};
+
+    private BolaBillar(int n, COLOR c, TIPO t) {
+>>>>>>> 78b1d651b6c0ef95d1a5b7630ed14ca479735857
         this.n = n;
         this.c = c;
         this.t = t;

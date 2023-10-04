@@ -1,5 +1,9 @@
 package ex4;
 
+<<<<<<< HEAD
+=======
+import org.junit.jupiter.api.AfterEach;
+>>>>>>> 78b1d651b6c0ef95d1a5b7630ed14ca479735857
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

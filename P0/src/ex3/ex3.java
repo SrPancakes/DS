@@ -11,7 +11,11 @@ public class ex3 {
         rel.addTrack(new Track("A", "fdsafdsa--fesdfa-dsa2", "Rodrigo", "Track 1", 120));
         rel.addTrack(new Track("AB", "fdsafdsa--fesdfa-dsa1", "Rodrigo", "Track 1", 120));
         rel.addTrack(new Track("B", "fdsafdsa--fesdfa-dsa0", "Rodrigo", "Track 2", 120));
+<<<<<<< HEAD
         System.out.println(rel);
+=======
+        System.out.println(rel.toString());
+>>>>>>> 78b1d651b6c0ef95d1a5b7630ed14ca479735857
 
         System.out.println("\n\n");
 
@@ -21,7 +25,11 @@ public class ex3 {
         rel2.addTrack(new Track("A", "fdsafdsa--fesdfa-dsa2", "Rodrigo", "Track 1", 120));
         rel2.addTrack(new Track("AB", "fdsafdsa--fesdfa-dsa1", "Rodrigo", "Track 1", 120));
         rel2.addTrack(new Track("B", "fdsafdsa--fesdfa-dsa0", "Rodrigo", "Track 2", 120));
+<<<<<<< HEAD
         System.out.println(rel2);
+=======
+        System.out.println(rel2.toString());
+>>>>>>> 78b1d651b6c0ef95d1a5b7630ed14ca479735857
     }
 
 }
