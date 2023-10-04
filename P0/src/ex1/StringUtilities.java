@@ -21,12 +21,12 @@ public class StringUtilities {
     }
 
     public static String lowercaseFirst(String s){
-        String res = "", aux = "";
+        StringBuilder res = new StringBuilder(), aux = new StringBuilder();
         for(char c : s.toCharArray()){ //Separamos en dos Strings los caracteres en minúscula y los caracteres en mayúscula
-            if(Character.isLowerCase(c)) res += c;
-            else aux += c;
+            if(Character.isLowerCase(c)) res.append(c);
+            else aux.append(c);
         }
-        return res + aux; //Después los juntamos
+        return res.append(aux).toString(); //Después los juntamos
     }
 
     public static boolean checkTextStats(String s, int lengthMin, int lengthMax){
