@@ -4,13 +4,13 @@ import java.util.Arrays;
 
 public class InmutableMatrix {
 
-    private int[][] arr;
+    final private int[][] arr;
 
     public InmutableMatrix(int[][] arr){
         int aux = 0;
-        for(int i = 0; i < arr.length; i++){
-            if(aux == 0) aux = arr[i].length;
-            else if(aux != arr[i].length) throw new IllegalArgumentException();
+        for (int[] ints : arr) {
+            if (aux == 0) aux = ints.length;
+            else if (aux != ints.length) throw new IllegalArgumentException();
         }
         this.arr = arr;
     }
@@ -72,9 +72,9 @@ public class InmutableMatrix {
 
         int aux = 0;
         int[] vals = new int[arr.length * arr[0].length];
-        for(int i = 0; i < arr.length; i++){
-            for(int j = 0; j < arr[i].length; j++){
-                vals[aux] = arr[i][j];
+        for (int[] ints : arr) {
+            for (int anInt : ints) {
+                vals[aux] = anInt;
                 aux++;
             }
         }
@@ -92,14 +92,14 @@ public class InmutableMatrix {
 
     public String toString(){
         StringBuilder res = new StringBuilder();
-        for(int i = 0; i < arr.length; i++){
-            for(int j = 0; j < arr[i].length; j++){
-                if(j==0)
-                    res.append("[" + arr[i][j] + ", ");
-                else if (j == arr[i].length - 1)
-                    res.append(arr[i][j] + "");
+        for (int[] ints : arr) {
+            for (int j = 0; j < ints.length; j++) {
+                if (j == 0)
+                    res.append("[" + ints[j] + ", ");
+                else if (j == ints.length - 1)
+                    res.append(ints[j] + "");
                 else
-                    res.append(arr[i][j] + ", ");
+                    res.append(ints[j] + ", ");
             }
             res.append("]\n");
         }
